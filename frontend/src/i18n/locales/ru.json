@@ -1,0 +1,79 @@
+{
+  "title": "Hexlet Chat",
+  "networkError": "Ошибка соединения",
+  "channelsTitle": "Каналы",
+  "logoutBtn": "Выйти",
+  "messages_one": "сообщение",
+  "messages_few": "сообщения",
+  "messages_many": "сообщений",
+  "messages_other": "сообщение",
+  "messagePlaceholder": "Введите сообщение...",
+  "messageBtnText": "Отправить",
+  "newMessage": "Новое сообщение",
+  "loading": {
+    "creating": "Создание...",
+    "saving": "Сохранение...",
+    "deleting": "Удаление..."
+  },
+  "modals": {
+    "titles": {
+      "addingChannel": "Добавить канал",
+      "deletingChannel": "Удалить канал",
+      "renamingChannel": "Переименовать канал"
+    },
+    "successMessage": {
+      "addingChannel": "Канал создан",
+      "deletingChannel": "Канал удалён",
+      "renamingChannel": "Канал переименован"
+    },
+    "addLabel": "Имя канала",
+    "addBtns": {
+      "cancel": "Отменить",
+      "submit": "Отправить"
+    },
+    "addErrors": {
+      "required": "Обязательное поле",
+      "min": "От 3 до 20 символов",
+      "max": "От 3 до 20 символов",
+      "repeats": "Должно быть уникальным"
+    },
+    "deleteQuestion": "Уверены?",
+    "deleteBtns": {
+      "cancel": "Отменить",
+      "delete": "Удалить"
+    },
+    "renameBtns": {
+      "cancel": "Отменить",
+      "submit": "Отправить"
+    }
+  },
+  "loginPage": {
+    "title": "Войти",
+    "imgAlt": "Войти",
+    "usernamePlaceholder": "Ваш ник",
+    "passwordPlaceholder": "Пароль",
+    "error": "Неверные имя пользователя или пароль",
+    "loginBtn": "Войти",
+    "noAcc": "Нет аккаунта?",
+    "signupLink": "Регистрация"
+  },
+  "signupPage": {
+    "title": "Регистрация",
+    "imgAlt": "Регистрация",
+    "usernamePlaceholder": "От 3 до 20 символов",
+    "usernameLabel": "Имя пользователя",
+    "passwordPlaceholder": "Не менее 6 символов",
+    "passwordLabel": "Пароль",
+    "confirmPasswordPlaceholder": "Пароли должны совпадать",
+    "confirmPasswordLabel": "Подтвердите пароль",
+    "required": "Обязательное поле",
+    "signupBtn": "Зарегистрироваться",
+    "signupError": "Такой пользователь уже существует",
+    "hasAcc": "Уже есть аккаунт?",
+    "loginLink": "Войти"
+  },
+  "manageChannelsBtns": {
+    "delete": "Удалить",
+    "rename": "Переименовать"
+  }
+}
