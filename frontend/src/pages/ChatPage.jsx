@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next'
 import { fetchChannels, addChannel, removeChannelById, updateChannel } from '../slices/channelsSlice'
 import { fetchMessages, addMessage } from '../slices/messagesSlice'
 import socketService from '../services/socket'
+import ChannelsList from '../components/ChannelsList'
+import MessageForm from '../components/MessageForm'
 
 const ChatPage = () => {
   const { t } = useTranslation()
