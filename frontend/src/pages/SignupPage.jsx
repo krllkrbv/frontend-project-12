@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 import * as Yup from 'yup'
 import { useDispatch } from 'react-redux'
 import api from '../services/api'
-import { setToken, setUser } from '../store/authSlice'
+import { setToken, setUser } from '../slices/authSlice'
 
 const SignupPage = () => {
   const { t } = useTranslation()

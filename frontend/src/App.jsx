@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import { store } from './store'
+import store from './slices/store'
 import PrivateRoute from './components/PrivateRoute'
 import Header from './components/Header'
 import ChatPage from './pages/ChatPage'
