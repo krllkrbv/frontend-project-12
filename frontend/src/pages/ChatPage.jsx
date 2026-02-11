@@ -93,28 +93,28 @@ const ChatPage = () => {
           <div className="flex-grow-1 overflow-auto p-3" id="messages-box" ref={messagesBoxRef}>
             {messagesLoading
               ? (
-                <div className="d-flex justify-content-center align-items-center h-100">
-                  <div className="spinner-border" role="status">
-                    <span className="visually-hidden">
-                      Загрузка сообщений...
-                    </span>
+                  <div className="d-flex justify-content-center align-items-center h-100">
+                    <div className="spinner-border" role="status">
+                      <span className="visually-hidden">
+                        Загрузка сообщений...
+                      </span>
+                    </div>
                   </div>
-                </div>
-              )
+                )
               : channelMessages.length === 0
                 ? <div />
                 : channelMessages.map(message => (
-                  <div key={message.id} className="text-break mb-2">
-                    <b>
-                      {message.username || 'User'}
-                    </b>
-                    :
-                    <span>
-                      {message.body}
-                    </span>
-                  </div>
-                ),
-                )}
+                    <div key={message.id} className="text-break mb-2">
+                      <b>
+                        {message.username || 'User'}
+                      </b>
+                      :
+                      <span>
+                        {message.body}
+                      </span>
+                    </div>
+                  ),
+                  )}
           </div>
           <div className="mt-auto p-3 border-top bg-white flex-shrink-0">
             <MessageForm />

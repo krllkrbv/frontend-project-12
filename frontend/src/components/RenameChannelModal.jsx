@@ -127,15 +127,15 @@ const RenameChannelModal = ({ isOpen, onClose, channel }) => {
                     >
                       {isSubmitting
                         ? (
-                          <>
-                            <span
-                              className="spinner-border spinner-border-sm me-2"
-                              role="status"
-                              aria-hidden="true"
-                            />
-                            {t('loading.saving')}
-                          </>
-                        )
+                            <>
+                              <span
+                                className="spinner-border spinner-border-sm me-2"
+                                role="status"
+                                aria-hidden="true"
+                              />
+                              {t('loading.saving')}
+                            </>
+                          )
                         : t('modals.renameBtns.submit')}
                     </button>
                   </div>

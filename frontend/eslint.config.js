@@ -28,13 +28,15 @@ export default defineConfig([
     rules: {
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
       '@stylistic/semi': ['error', 'never'],
-      '@stylistic/indent': ['error', 2],
+      '@stylistic/indent': ['error', 2, { offsetTernaryExpressions: true }],
       '@stylistic/eol-last': ['error', 'always'],
       '@stylistic/no-tabs': 'error',
       '@stylistic/comma-dangle': ['error', 'always-multiline'],
-      '@stylistic/no-multiple-empty-lines': ['error', { max: 0, maxEOF: 0 }],
+      '@stylistic/no-multiple-empty-lines': ['error', { max: 1, maxEOF: 0 }],
       '@stylistic/brace-style': ['error', 'stroustrup'],
       '@stylistic/jsx-one-expression-per-line': ['error', { allow: 'single-child' }],
+      '@stylistic/no-trailing-spaces': 'error',
+      '@stylistic/lines-between-class-members': ['error', 'always'],
     },
   },
   {

@@ -88,15 +88,15 @@ const RemoveChannelModal = ({ isOpen, onClose, channel }) => {
               >
                 {isRemoving
                   ? (
-                    <>
-                      <span
-                        className="spinner-border spinner-border-sm me-2"
-                        role="status"
-                        aria-hidden="true"
-                      />
-                      {t('loading.deleting')}
-                    </>
-                  )
+                      <>
+                        <span
+                          className="spinner-border spinner-border-sm me-2"
+                          role="status"
+                          aria-hidden="true"
+                        />
+                        {t('loading.deleting')}
+                      </>
+                    )
                   : t('modals.deleteBtns.delete')}
               </button>
             </div>

@@ -109,7 +109,7 @@ const LoginPage = () => {
                   <div className="mt-3">
                     <span>
                       {t('loginPage.noAcc')}
-                      <Link to="/signup"> 
+                      <Link to="/signup">
                         {' '}
                         {t('loginPage.signupLink')}
                       </Link>

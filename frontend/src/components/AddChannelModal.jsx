@@ -132,15 +132,15 @@ const AddChannelModal = ({ isOpen, onClose }) => {
                     >
                       {isSubmitting
                         ? (
-                          <>
-                            <span
-                              className="spinner-border spinner-border-sm me-2"
-                              role="status"
-                              aria-hidden="true"
-                            />
-                            {t('loading.creating')}
-                          </>
-                        )
+                            <>
+                              <span
+                                className="spinner-border spinner-border-sm me-2"
+                                role="status"
+                                aria-hidden="true"
+                              />
+                              {t('loading.creating')}
+                            </>
+                          )
                         : t('modals.addBtns.submit')}
                     </button>
                   </div>
