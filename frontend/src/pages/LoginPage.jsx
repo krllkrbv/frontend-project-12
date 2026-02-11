@@ -1,23 +1,20 @@
-import { useState } from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { useNavigate, Link } from 'react-router-dom';
+import { useState } from 'react'
+import { Formik, Form, Field, ErrorMessage } from 'formik'
+import { useNavigate, Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import * as Yup from 'yup'
 import { useDispatch } from 'react-redux'
 import api from '../services/api'
 import { setToken, setUser } from '../slices/authSlice'
-
 const LoginPage = () => {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const [authError, setAuthError] = useState('')
-
   const validationSchema = Yup.object({
     username: Yup.string().required(t('signupPage.required')),
     password: Yup.string().required(t('signupPage.required')),
   })
-
   const handleSubmit = async (values, { setSubmitting }) => {
     setAuthError('')
     try {
@@ -28,14 +25,15 @@ const LoginPage = () => {
         dispatch(setUser({ username }))
         navigate('/')
       }
-    } catch (error) {
+    }
+    catch (error) {
       console.error('Login error:', error)
       setAuthError(t('loginPage.error'))
-    } finally {
+    }
+    finally {
       setSubmitting(false)
     }
   }
-
   return (
     <div className="container-fluid h-100">
       <div className="row justify-content-center align-items-center h-100">
@@ -81,7 +79,6 @@ const LoginPage = () => {
                             className="text-danger small"
                           />
                         </div>
-
                         <div className="mb-4">
                           <label htmlFor="password" className="form-label">
                             {t('loginPage.passwordPlaceholder')}
@@ -99,7 +96,6 @@ const LoginPage = () => {
                             className="text-danger small"
                           />
                         </div>
-
                         <button
                           type="submit"
                           disabled={isSubmitting}
@@ -113,7 +109,10 @@ const LoginPage = () => {
                   <div className="mt-3">
                     <span>
                       {t('loginPage.noAcc')}
-                      <Link to="/signup"> {t('loginPage.signupLink')}</Link>
+                      <Link to="/signup"> 
+                        {' '}
+                        {t('loginPage.signupLink')}
+                      </Link>
                     </span>
                   </div>
                 </div>
@@ -125,5 +124,4 @@ const LoginPage = () => {
     </div>
   )
 }
-
 export default LoginPage

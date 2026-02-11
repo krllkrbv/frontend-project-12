@@ -6,52 +6,40 @@ import { fetchMessages, addMessage } from '../slices/messagesSlice'
 import socketService from '../services/socket'
 import ChannelsList from '../components/ChannelsList'
 import MessageForm from '../components/MessageForm'
-
 const ChatPage = () => {
   const { t } = useTranslation()
   const dispatch = useDispatch()
   const token = useSelector(state => state.auth.token)
   const { items: channels, currentChannelId, loading: channelsLoading } = useSelector(state => state.channels)
   const { items: messages, loading: messagesLoading } = useSelector(state => state.messages)
-
   const currentChannel = channels.find(channel => channel.id === currentChannelId)
   const channelMessages = messages.filter(message => message.channelId === currentChannelId)
-
   const messagesBoxRef = useRef(null)
-
   useEffect(() => {
     if (!token) return
-
     dispatch(fetchChannels())
     dispatch(fetchMessages())
   }, [token, dispatch])
-
   useEffect(() => {
     if (!token) {
       return
     }
-
     try {
       socketService.connect(token)
-
       const handleNewMessage = (newMessage) => {
         const username = newMessage.username || 'User'
         const messageWithUsername = { ...newMessage, username }
         dispatch(addMessage(messageWithUsername))
       }
-
       const handleNewChannel = (newChannel) => {
         dispatch(addChannel(newChannel))
       }
-
       const handleRemoveChannel = (channelId) => {
         dispatch(removeChannelById(channelId))
       }
-
       const handleRenameChannel = (updatedChannel) => {
         dispatch(updateChannel(updatedChannel))
       }
-
       socketService.onNewMessage(handleNewMessage)
       socketService.onNewChannel(handleNewChannel)
       socketService.onRemoveChannel(handleRemoveChannel)
@@ -60,18 +48,15 @@ const ChatPage = () => {
     catch (error) {
       console.error('WebSocket connection failed:', error)
     }
-
     return () => {
       socketService.disconnect()
     }
   }, [token, dispatch])
-
   useEffect(() => {
     if (messagesBoxRef.current) {
       messagesBoxRef.current.scrollTop = messagesBoxRef.current.scrollHeight
     }
   }, [channelMessages])
-
   if (channelsLoading || messagesLoading) {
     return (
       <div className="d-flex justify-content-center align-items-center h-100">
@@ -83,7 +68,6 @@ const ChatPage = () => {
       </div>
     )
   }
-
   return (
     <div className="container-fluid h-100">
       <div className="row g-0 h-100 flex-grow-1">
@@ -125,7 +109,6 @@ const ChatPage = () => {
                       {message.username || 'User'}
                     </b>
                     :
-
                     <span>
                       {message.body}
                     </span>
@@ -141,5 +124,4 @@ const ChatPage = () => {
     </div>
   )
 }
-
 export default ChatPage

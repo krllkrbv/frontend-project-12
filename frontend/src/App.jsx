@@ -9,7 +9,6 @@ import SignupPage from './pages/SignupPage'
 import NotFoundPage from './pages/NotFoundPage'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-
 function App() {
   return (
     <Provider store={store}>
@@ -35,5 +34,4 @@ function App() {
     </Provider>
   )
 }
-
 export default App

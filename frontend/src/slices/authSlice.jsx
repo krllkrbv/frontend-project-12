@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import api from '../services/api'
-
 export const fetchUser = createAsyncThunk(
   'auth/fetchUser',
   async (_, { rejectWithValue }) => {
@@ -15,7 +14,6 @@ export const fetchUser = createAsyncThunk(
     }
   },
 )
-
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
@@ -62,6 +60,5 @@ const authSlice = createSlice({
       })
   },
 })
-
 export const { setToken, setUser, logout } = authSlice.actions
 export default authSlice.reducer

@@ -1,11 +1,9 @@
 import axios from 'axios'
-
 const api = axios.create({
   baseURL: `${import.meta.env.VITE_API_URL || ''}/api/v1`,
   withCredentials: true,
   timeout: 10000,
 })
-
 // Перехватчик для добавления токена к запросам
 api.interceptors.request.use(
   (config) => {
@@ -19,7 +17,6 @@ api.interceptors.request.use(
     return Promise.reject(error)
   },
 )
-
 // Перехватчик для обработки ошибок авторизации
 api.interceptors.response.use(
   (response) => {
@@ -36,5 +33,4 @@ api.interceptors.response.use(
     return Promise.reject(error)
   },
 )
-
 export default api

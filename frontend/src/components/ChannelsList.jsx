@@ -5,56 +5,46 @@ import { setCurrentChannel } from '../slices/channelsSlice'
 import AddChannelModal from './AddChannelModal'
 import RenameChannelModal from './RenameChannelModal'
 import RemoveChannelModal from './RemoveChannelModal'
-
 const ChannelsList = () => {
   const { t } = useTranslation()
   const dispatch = useDispatch()
   const { items: channels, currentChannelId } = useSelector(state => state.channels)
-
   const [showAddModal, setShowAddModal] = useState(false)
   const [showRenameModal, setShowRenameModal] = useState(false)
   const [showRemoveModal, setShowRemoveModal] = useState(false)
   const [selectedChannel, setSelectedChannel] = useState(null)
   const [showDropdown, setShowDropdown] = useState(null)
   const dropdownRef = useRef(null)
-
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setShowDropdown(null)
       }
     }
-
     document.addEventListener('click', handleClickOutside)
     return () => {
       document.removeEventListener('click', handleClickOutside)
     }
   }, [])
-
   const handleChannelClick = (channelId) => {
     dispatch(setCurrentChannel(channelId))
     setShowDropdown(null)
   }
-
   const handleDropdownToggle = (channelId, e) => {
     e.stopPropagation()
     setShowDropdown(showDropdown === channelId ? null : channelId)
   }
-
   const handleRename = (channel) => {
     setSelectedChannel(channel)
     setShowRenameModal(true)
     setShowDropdown(null)
   }
-
   const handleRemove = (channel) => {
     setSelectedChannel(channel)
     setShowRemoveModal(true)
     setShowDropdown(null)
   }
-
   const isRemovable = channel => channel.name !== 'general' && channel.name !== 'random'
-
   return (
     <div className="d-flex flex-column h-100">
       <div className="d-flex mt-1 justify-content-between mb-2 ps-4 pe-2">
@@ -76,7 +66,6 @@ const ChannelsList = () => {
           </span>
         </button>
       </div>
-
       <ul className="nav flex-column nav-pills nav-fill px-2" data-testid="channels-list">
         {channels.map(channel => (
           <li key={channel.id} className="nav-item w-100 position-relative" data-testid={`channel-${channel.id}`}>
@@ -94,7 +83,6 @@ const ChannelsList = () => {
                 </span>
                 {channel.name}
               </button>
-
               {isRemovable(channel) && (
                 <button
                   type="button"
@@ -109,7 +97,6 @@ const ChannelsList = () => {
                 </button>
               )}
             </div>
-
             {isRemovable(channel) && showDropdown === channel.id && (
               <ul
                 className="dropdown-menu show"
@@ -153,7 +140,6 @@ const ChannelsList = () => {
           </li>
         ))}
       </ul>
-
       <AddChannelModal
         isOpen={showAddModal}
         onClose={() => {
@@ -161,7 +147,6 @@ const ChannelsList = () => {
           setShowDropdown(null)
         }}
       />
-
       {showRenameModal && (
         <RenameChannelModal
           isOpen={showRenameModal}
@@ -172,7 +157,6 @@ const ChannelsList = () => {
           channel={selectedChannel}
         />
       )}
-
       {showRemoveModal && (
         <RemoveChannelModal
           isOpen={showRemoveModal}
@@ -186,5 +170,4 @@ const ChannelsList = () => {
     </div>
   )
 }
-
 export default ChannelsList

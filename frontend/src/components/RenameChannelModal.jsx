@@ -6,12 +6,10 @@ import * as Yup from 'yup'
 import PropTypes from 'prop-types'
 import { renameChannel } from '../slices/channelsSlice'
 import { filterProfanity } from '../utils/profanityFilter'
-
 const RenameChannelModal = ({ isOpen, onClose, channel }) => {
   const { t } = useTranslation()
   const dispatch = useDispatch()
   const channels = useSelector(state => state.channels.items)
-
   const validationSchema = Yup.object({
     name: Yup.string()
       .min(3, t('modals.addErrors.min'))
@@ -24,7 +22,6 @@ const RenameChannelModal = ({ isOpen, onClose, channel }) => {
         )
       }),
   })
-
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
       const filteredName = filterProfanity(values.name.trim())
@@ -42,22 +39,18 @@ const RenameChannelModal = ({ isOpen, onClose, channel }) => {
       setSubmitting(false)
     }
   }
-
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === 'Escape') {
         onClose()
       }
     }
-
     if (isOpen) {
       document.addEventListener('keydown', handleEscape)
       return () => document.removeEventListener('keydown', handleEscape)
     }
   }, [isOpen, onClose])
-
   if (!isOpen || !channel) return null
-
   return (
     <>
       <div
@@ -155,7 +148,6 @@ const RenameChannelModal = ({ isOpen, onClose, channel }) => {
     </>
   )
 }
-
 RenameChannelModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
@@ -164,5 +156,4 @@ RenameChannelModal.propTypes = {
     name: PropTypes.string.isRequired,
   }).isRequired,
 }
-
 export default RenameChannelModal

@@ -6,14 +6,11 @@ import * as Yup from 'yup'
 import { useDispatch } from 'react-redux'
 import api from '../services/api'
 import { setToken, setUser } from '../slices/authSlice'
-
 const SignupPage = () => {
   const { t } = useTranslation()
   const [signupError, setSignupError] = useState('')
-
   const navigate = useNavigate()
   const dispatch = useDispatch()
-
   const validationSchema = Yup.object({
     username: Yup.string()
       .min(3, t('signupPage.usernamePlaceholder'))
@@ -26,7 +23,6 @@ const SignupPage = () => {
       .oneOf([Yup.ref('password'), null], t('signupPage.confirmPasswordPlaceholder'))
       .required(t('signupPage.required')),
   })
-
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
       setSignupError('')
@@ -34,14 +30,12 @@ const SignupPage = () => {
         username: values.username,
         password: values.password,
       })
-
       // После успешной регистрации сразу входим
       if (response.status === 201 || response.status === 200) {
         const loginResponse = await api.post('/login', {
           username: values.username,
           password: values.password,
         })
-
         if (loginResponse.data.token) {
           console.log('SignupPage - login successful, token:', loginResponse.data.token)
           const { token } = loginResponse.data
@@ -64,7 +58,6 @@ const SignupPage = () => {
       setSubmitting(false)
     }
   }
-
   return (
     <div className="container-fluid h-100" data-testid="signup-page">
       <div className="row justify-content-center align-items-center h-100">
@@ -105,7 +98,6 @@ const SignupPage = () => {
                           />
                           <ErrorMessage name="username" component="div" className="text-danger small" />
                         </div>
-
                         <div className="mb-3" data-testid="password-group">
                           <label htmlFor="password" className="form-label">
                             {t('signupPage.passwordLabel')}
@@ -120,7 +112,6 @@ const SignupPage = () => {
                           />
                           <ErrorMessage name="password" component="div" className="text-danger small" />
                         </div>
-
                         <div className="mb-4" data-testid="confirm-password-group">
                           <label htmlFor="confirmPassword" className="form-label">
                             {t('signupPage.confirmPasswordLabel')}
@@ -135,7 +126,6 @@ const SignupPage = () => {
                           />
                           <ErrorMessage name="confirmPassword" component="div" className="text-danger small" />
                         </div>
-
                         <button
                           type="submit"
                           disabled={isSubmitting}
@@ -151,7 +141,6 @@ const SignupPage = () => {
                     <span>
                       {t('signupPage.hasAcc')}
                     </span>
-
                     <Link to="/login">
                       {t('signupPage.loginLink')}
                     </Link>
@@ -165,5 +154,4 @@ const SignupPage = () => {
     </div>
   )
 }
-
 export default SignupPage

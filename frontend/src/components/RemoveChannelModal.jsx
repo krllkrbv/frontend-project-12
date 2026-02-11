@@ -3,25 +3,21 @@ import { useDispatch } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
 import { removeChannel } from '../slices/channelsSlice'
-
 const RemoveChannelModal = ({ isOpen, onClose, channel }) => {
   const { t } = useTranslation()
   const dispatch = useDispatch()
   const [isRemoving, setIsRemoving] = useState(false)
-
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === 'Escape') {
         onClose()
       }
     }
-
     if (isOpen) {
       document.addEventListener('keydown', handleEscape)
       return () => document.removeEventListener('keydown', handleEscape)
     }
   }, [isOpen, onClose])
-
   const handleRemove = async () => {
     try {
       setIsRemoving(true)
@@ -35,9 +31,7 @@ const RemoveChannelModal = ({ isOpen, onClose, channel }) => {
       setIsRemoving(false)
     }
   }
-
   if (!isOpen || !channel) return null
-
   return (
     <>
       <div
@@ -112,7 +106,6 @@ const RemoveChannelModal = ({ isOpen, onClose, channel }) => {
     </>
   )
 }
-
 RemoveChannelModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
@@ -121,5 +114,4 @@ RemoveChannelModal.propTypes = {
     name: PropTypes.string.isRequired,
   }).isRequired,
 }
-
 export default RemoveChannelModal

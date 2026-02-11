@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { toast } from 'react-toastify'
 import api from '../services/api'
-
 export const fetchMessages = createAsyncThunk(
   'messages/fetchMessages',
   async (_, { rejectWithValue }) => {
@@ -15,7 +14,6 @@ export const fetchMessages = createAsyncThunk(
     }
   },
 )
-
 export const sendMessage = createAsyncThunk(
   'messages/sendMessage',
   async (messageData, { rejectWithValue }) => {
@@ -29,7 +27,6 @@ export const sendMessage = createAsyncThunk(
     }
   },
 )
-
 const messagesSlice = createSlice({
   name: 'messages',
   initialState: {
@@ -41,17 +38,14 @@ const messagesSlice = createSlice({
     addMessage: (state, action) => {
       const newMessage = action.payload
       const now = new Date().getTime()
-
       const existingMessage = state.items.find(msg =>
         msg.body === newMessage.body
         && msg.channelId === newMessage.channelId
         && msg.username === newMessage.username
         && Math.abs(new Date(msg.createdAt || now).getTime() - now) < 1000,
       )
-
       if (!existingMessage) {
         const username = action.payload.username || action.payload.name || action.payload.login || 'User'
-
         const messageWithUsername = {
           ...action.payload,
           username,
@@ -87,6 +81,5 @@ const messagesSlice = createSlice({
       })
   },
 })
-
 export const { addMessage, clearMessages } = messagesSlice.actions
 export default messagesSlice.reducer

@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { toast } from 'react-toastify'
 import api from '../services/api'
-
 export const fetchChannels = createAsyncThunk(
   'channels/fetchChannels',
   async (_, { rejectWithValue }) => {
@@ -17,7 +16,6 @@ export const fetchChannels = createAsyncThunk(
     }
   },
 )
-
 export const createChannel = createAsyncThunk(
   'channels/createChannel',
   async (channelData, { rejectWithValue }) => {
@@ -32,7 +30,6 @@ export const createChannel = createAsyncThunk(
     }
   },
 )
-
 export const removeChannel = createAsyncThunk(
   'channels/removeChannel',
   async (channelId, { rejectWithValue }) => {
@@ -47,7 +44,6 @@ export const removeChannel = createAsyncThunk(
     }
   },
 )
-
 export const renameChannel = createAsyncThunk(
   'channels/renameChannel',
   async ({ channelId, name }, { rejectWithValue }) => {
@@ -62,7 +58,6 @@ export const renameChannel = createAsyncThunk(
     }
   },
 )
-
 const channelsSlice = createSlice({
   name: 'channels',
   initialState: {
@@ -173,6 +168,5 @@ const channelsSlice = createSlice({
       })
   },
 })
-
 export const { setCurrentChannel, addChannel, removeChannelById, updateChannel } = channelsSlice.actions
 export default channelsSlice.reducer

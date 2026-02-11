@@ -1,9 +1,7 @@
-import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-
+import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 const NotFoundPage = () => {
-    const { t } = useTranslation();
-
+  const { t } = useTranslation()
   return (
     <div className="container-fluid h-100" style={{ backgroundColor: '#f5f7fa' }}>
       <div className="row justify-content-center align-items-center h-100">
@@ -41,5 +39,4 @@ const NotFoundPage = () => {
     </div>
   )
 }
-
-export default NotFoundPage;
+export default NotFoundPage

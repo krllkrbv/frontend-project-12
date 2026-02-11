@@ -6,12 +6,10 @@ import * as Yup from 'yup'
 import PropTypes from 'prop-types'
 import { createChannel } from '../slices/channelsSlice'
 import { filterProfanity } from '../utils/profanityFilter'
-
 const AddChannelModal = ({ isOpen, onClose }) => {
   const { t } = useTranslation()
   const dispatch = useDispatch()
   const channels = useSelector(state => state.channels.items)
-
   const validationSchema = Yup.object({
     name: Yup.string()
       .min(3, t('modals.addErrors.min'))
@@ -28,7 +26,6 @@ const AddChannelModal = ({ isOpen, onClose }) => {
         )
       }),
   })
-
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
       const trimmedName = values.name.trim()
@@ -44,24 +41,20 @@ const AddChannelModal = ({ isOpen, onClose }) => {
       setSubmitting(false)
     }
   }
-
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === 'Escape') {
         onClose()
       }
     }
-
     if (isOpen) {
       document.addEventListener('keydown', handleEscape)
       return () => document.removeEventListener('keydown', handleEscape)
     }
   }, [isOpen, onClose])
-
   if (!isOpen) {
     return null
   }
-
   return (
     <>
       <div
@@ -160,10 +153,8 @@ const AddChannelModal = ({ isOpen, onClose }) => {
     </>
   )
 }
-
 AddChannelModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
 }
-
 export default AddChannelModal
