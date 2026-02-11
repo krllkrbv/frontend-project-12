@@ -1,10 +1,10 @@
 .PHONY: build start install
 
 install:
-    npm ci && cd frontend && npm ci
+	npm ci && cd frontend && npm ci
 
 build:
-    cd frontend && npm run build
+	cd frontend && npm run build
 
 start:
 	npx start-server -s ./frontend/dist

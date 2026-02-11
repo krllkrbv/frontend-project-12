@@ -6,7 +6,7 @@ import messageReducer from './messagesSlice.js';
 const store = configureStore({
   reducer: {
     auth: authReducer,
-    channel: channelReducer,
+    channels: channelReducer,
     messages: messageReducer
   }
 });
