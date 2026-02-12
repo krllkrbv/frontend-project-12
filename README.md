@@ -17,11 +17,6 @@ make start
 cd frontend && npm run dev
 ```
 
-### Локальные серверы
-
-- **Frontend (разработка)**: [http://localhost:5173](http://localhost:5173)
-- **Backend сервер**: [http://localhost:5001](http://localhost:5001)
-
 ### Запуск серверов
 
 1. **Запуск backend сервера** (в отдельном терминале):
