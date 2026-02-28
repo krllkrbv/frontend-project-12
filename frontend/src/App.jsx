@@ -15,19 +15,21 @@ function App() {
       <Router>
         <div className="d-flex flex-column h-100">
           <Header />
-          <Routes className="flex-grow-1">
-            <Route
-              path="/"
-              element={(
-                <PrivateRoute>
-                  <ChatPage />
-                </PrivateRoute>
-              )}
-            />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/signup" element={<SignupPage />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
+          <div style={{ flex: '1 1 0', overflow: 'hidden', minHeight: 0 }}>
+            <Routes>
+              <Route
+                path="/"
+                element={(
+                  <PrivateRoute>
+                    <ChatPage />
+                  </PrivateRoute>
+                )}
+              />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/signup" element={<SignupPage />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </div>
           <ToastContainer position="top-right" autoClose={3000} />
         </div>
       </Router>

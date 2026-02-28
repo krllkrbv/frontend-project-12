@@ -20,10 +20,6 @@
   },
   "homepage": "https://github.com/krllkrbv/frontend-project-12#readme",
   "dependencies": {
-    "@hexlet/chat-server": "^2.0.4",
-    "@rollbar/react": "^1.0.0",
-    "formik": "^2.4.9",
-    "react-router-dom": "^7.11.0",
-    "rollbar": "^2.26.5"
+    "@hexlet/chat-server": "^2.0.4"
   }
 }

@@ -76,7 +76,7 @@ const ChatPage = () => {
             <ChannelsList />
           </div>
         </div>
-        <div className="col-8 col-md-9 d-flex flex-column h-100">
+        <div className="col-8 col-md-9 d-flex flex-column h-100" style={{ minHeight: 0 }}>
           <div className="p-3 border-bottom bg-light flex-shrink-0">
             <div>
               <b>
@@ -90,7 +90,7 @@ const ChatPage = () => {
               </div>
             )}
           </div>
-          <div className="flex-grow-1 overflow-auto p-3" id="messages-box" ref={messagesBoxRef}>
+          <div className="overflow-auto p-3" style={{ flex: '1 1 0' }} id="messages-box" ref={messagesBoxRef}>
             {messagesLoading
               ? (
                   <div className="d-flex justify-content-center align-items-center h-100">

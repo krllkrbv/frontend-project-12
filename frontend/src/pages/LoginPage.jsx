@@ -2,19 +2,16 @@ import { useState } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { useNavigate, Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import * as Yup from 'yup'
 import { useDispatch } from 'react-redux'
 import api from '../services/api'
 import { setToken, setUser } from '../slices/authSlice'
+import { getLoginSchema } from '../utils/validationSchemas'
 const LoginPage = () => {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const [authError, setAuthError] = useState('')
-  const validationSchema = Yup.object({
-    username: Yup.string().required(t('signupPage.required')),
-    password: Yup.string().required(t('signupPage.required')),
-  })
+  const validationSchema = getLoginSchema(t)
   const handleSubmit = async (values, { setSubmitting }) => {
     setAuthError('')
     try {
